@@ -5,9 +5,10 @@ The Solid Front End Form CLI is meant to help creating forms on Vue/Angular fram
 ## Index
 
 <!-- TOC -->
-- [Main Features](#mainfeatures)
+- [CLI commands](#commands)
 - [Install](#install)
 - [Usage and examples](#usage)
+  - [Help](#help)
   - [List shapes available](#usage-list-shapes)
   - [Set custom CSS styles](#usage-set-custom-styles)
   - [Create form file and dependencies](#usage-create)
@@ -16,19 +17,19 @@ The Solid Front End Form CLI is meant to help creating forms on Vue/Angular fram
 
 <br/>
 
-## Main Features <a name="mainfeatures"></a>
+## CLI commands <a name="commands"></a>
 
 - ```sfef list-shapes``` :     List of available shapes (SHACL .ttl files)
 
-- ```sfef set-custom-css``` :   Set up custom CSS classes to be used in the form component
+- ```sfef set-custom-css``` :   Set up custom CSS classes to be used in the FE form component
 
-- ```sfef create``` :          Creates form component following SHACL shape
+- ```sfef create``` :          Creates the form (following SHACL shape) and required dependencies according to the selected framework
 
 <br/>
 
 ## Install <a name="install"></a>
 
-- Solid-sfef-cli is a development CLI tool, it is recommened to install it using ```--global``` option.
+- Solid-sfef-cli is a development CLI tool, it is recommened to install it using ```--global``` option. The following commands can be used:
 
     ```bash
     npm install SolidLabResearch/solid-sfef-cli --global
@@ -40,7 +41,7 @@ The Solid Front End Form CLI is meant to help creating forms on Vue/Angular fram
     npm i SolidLabResearch/solid-sfef-cli -g
     ```
 
-- It could also be install locally as a dev dependency using ```--save-dev``` option.
+- It could also be install locally as a dev dependency using ```--save-dev``` option. The following commands can be used:
 
     ```bash
     npm install SolidLabResearch/solid-sfef-cli --save-dev
@@ -56,7 +57,9 @@ The Solid Front End Form CLI is meant to help creating forms on Vue/Angular fram
 
 ## Usage and examples<a name="usage"></a>
 
-Print out the commands and options in the CLI tool
+### Help <a name="help"></a>
+
+Use the help command to print out the commands and options available in the CLI tool.
 
 ```bash
 sfef help
