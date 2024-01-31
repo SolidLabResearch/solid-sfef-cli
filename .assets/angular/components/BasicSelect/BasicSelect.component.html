@@ -1,0 +1,43 @@
+<div class="basic-select {{ selectWrapperClass }}">
+    <label for="{{ selectName }}"
+        class="{{ selectLabelClass }}">
+        {{ selectLabel }}
+    </label>
+
+    <select
+        class="{{ selectClass }}"
+        id="{{ selectId }}"
+        name="{{ selectName }}"
+        [attr.autocomplete]="selectAutocomplete ? selectAutocomplete : null"
+        [attr.autofocus]="selectAutofocus ? selectAutofocus : null"
+        [attr.disabled]="selectDisabled ? selectDisabled : null"
+        [attr.form]="selectForm"
+        [attr.multiple]="selectMultiple ? selectMultiple : null"
+        [attr.required]="selectRequired ? selectRequired: null"
+        [attr.size]="selectSize ? selectSize : null"
+        value="{{ selectValue }}"
+        [(ngModel)]="selectValue"
+    >
+        <ng-container *ngIf="selectOptions.length">
+            <option *ngFor="let option of selectOptions"
+                disabled="{{ option.disabled ? option.disabled : null }}"
+                selected="{{ option.selected ? option.selected : null }}"
+                value="{{ option.value }}">
+                {{ option.label }}
+            </option>
+        </ng-container>
+
+        <ng-container *ngIf="selectOptionsGroup.length">
+            <optgroup *ngFor="let optionGroup of selectOptionsGroup"
+                disabled="{{ optionGroup.disabled ? optionGroup.disabled : null }}"
+                label="{{ optionGroup.label }}">
+                <option *ngFor="let option of optionGroup.options"
+                    disabled="{{ option.disabled ? option.disabled : null }}"
+                    selected="{{ option.selected ? option.selected : null }}"
+                    value="{{ option.value }}">
+                    {{ option.label }}
+                </option>
+            </optgroup>
+        </ng-container>
+    </select>
+</div>

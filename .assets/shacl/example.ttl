@@ -1,0 +1,68 @@
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+schema:PersonShape
+    a rdfs:Class, sh:NodeShape ;
+    sh:targetClass schema:Person ;
+    sh:property [
+        sh:path schema:givenName ;
+        sh:datatype xsd:string ;
+        sh:name "Given name or first name" ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+    ] ;
+    sh:property [
+        sh:path schema:familyName ;
+        sh:datatype xsd:string ;
+        sh:name "Family name or surname" ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+    ] ;
+    sh:property [
+        sh:path schema:birthDate ;
+        sh:datatype xsd:date ;
+        sh:maxCount 1 ;
+    ] ;
+    sh:property [
+        sh:path schema:gender ;
+        sh:in ( "female" "male" ) ;
+    ] ;
+    sh:property [
+        sh:path schema:email;
+        sh:name "E-mail address" ;
+        sh:datatype xsd:string ;
+    ]  ;
+    sh:property [
+        sh:name "Receive newsletter" ;
+        sh:datatype xsd:boolean;
+    ] ;
+    sh:property [
+        sh:path schema:address ;
+        sh:node schema:AddressShape ;
+    ] .
+
+schema:AddressShape
+    a rdfs:Class, sh:NodeShape ;
+    sh:closed true ;
+    sh:property [
+        sh:path schema:streetAddress ;
+        sh:datatype xsd:string ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+    ] ;
+    sh:property [
+        sh:path schema:streetNumber ;
+        sh:datatype xsd:integer ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+    ] ;
+    sh:property [
+        sh:path schema:postalCode ;
+        sh:datatype xsd:string ;
+        sh:pattern "[a-z A-Z]{2}[0-9]{4}" ;
+        sh:description "Type postal code: 2 letters + 4 digits" ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+    ] .

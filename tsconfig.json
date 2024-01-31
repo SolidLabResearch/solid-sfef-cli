@@ -1,0 +1,21 @@
+{
+  "compilerOptions": {
+    "rootDir": "./src",
+    "outDir": "./build",
+    "declaration": true,
+    "strict": true,
+    "noImplicitAny": true,
+    "target": "es2022",
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
+    "sourceMap": true,
+  },
+  "exclude": [
+    "node_modules",
+    ".assets"
+  ],
+  "include": [
+    "./src/**/*",
+    "decs.d.ts"
+  ]
+}

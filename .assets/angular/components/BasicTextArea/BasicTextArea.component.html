@@ -1,0 +1,29 @@
+<div class="basic-text-area {{ textAreaWrapperClass }}">
+    <label for="{{ textAreaName }}"
+        class="{{ textAreaLabelClass }}">
+        {{ textAreaLabel }}
+    </label>
+    <textarea
+        class="{{ textAreaClass }}"
+        id="{{ textAreaId }}"
+        name="{{ textAreaName }}"
+        [attr.autocomplete]="textAreaAutocomplete ? textAreaAutocomplete : null"
+        [attr.autocorrect]="textAreaAutocorrect ? textAreaAutocorrect : null"
+        [attr.autofocus]="textAreaAutofocus ? textAreaAutofocus : null"
+        cols="{{ textAreaCols }}"
+        [attr.dirname]="textAreaDirname ? textAreaDirname : null"
+        disabled="{{ textAreaDisabled ? textAreaDisabled : null }}"
+        [attr.form]="textAreaForm"
+        [attr.maxlength]="textAreaMaxlength"
+        [attr.minlength]="textAreaMinlength"
+        [attr.placeholder]="textAreaPlaceholder ? textAreaPlaceholder : null"
+        readonly="{{ textAreaReadonly ? textAreaReadonly : null }}"
+        required="{{ textAreaRequired ? textAreaRequired : null }}"
+        rows="{{ textAreaRows }}"
+        spellcheck="{{ textAreaSpellcheck }}"
+        value="{{ textAreaValue }}"
+        [attr.wrap]="textAreaWrap ? textAreaWrap : null"
+        [(ngModel)]="textAreaValue"
+    >
+    </textarea>
+</div>

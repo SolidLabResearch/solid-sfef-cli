@@ -1,0 +1,26 @@
+<fieldset
+    *ngIf="fieldsetInputs && ['checkbox', 'radio'].includes(fieldsetType)"
+    class="{{ fieldsetClass }}"
+    disabled="{{ fieldsetDisabled ? 'disabled' : null }}"
+    [attr.form]="fieldsetForm"
+    name="{{ fieldsetName }}"
+    >
+    <legend class="{{ fieldsetLegendClass }}"
+        [innerHTML]="fieldsetLegend"></legend>
+    <app-basic-input
+        *ngFor="let input of fieldsetInputs"
+        inputType="{{ fieldsetType }}"
+        inputId="{{ input.id ? input.id : input.value }}"
+        inputName="{{ fieldsetName }}"
+        inputForm="{{ fieldsetForm }}"
+        inputLabel="{{ input.label }}"
+        inputDisabled="{{ input.disabled === true ? 'disabled' : false }}"
+        inputChecked="{{ input.checked }}"
+        inputRequired="{{ input.required }}"
+        inputValue="{{ input.value }}"
+        inputWrapperClass="wrapper-custom-css"
+        inputLabelClass="label-custom-css"
+        inputClass="my-css-class"
+        [(ngModel)]="input.value"
+    ></app-basic-input>
+</fieldset>

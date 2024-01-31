@@ -1,0 +1,129 @@
+<div class="basic-input {{ inputWrapperClass }}">
+    <ng-container
+        *ngIf="inputAdditionalInfo !== ''; then additionalLabel; else noAdditionalLabel">
+    </ng-container>
+    <ng-template #noAdditionalLabel>
+        <label
+            for="{{ inputId }}"
+            class="{{ inputLabelClass }}">
+            {{ inputLabel }}
+        </label>
+    </ng-template>
+
+    <ng-template #additionalLabel>
+        <div v-else
+            class="{{ inputLabelClass }}">
+            <label for="{{ inputId }}">
+                {{ inputLabel }}
+            </label>
+            <span
+                id="{{ inputAriaDescribedBy }}"
+                class="{{ inputLabelInfoClass }}">
+                {{ inputAdditionalInfo }}
+            </span>
+        </div>
+    </ng-template>
+    <input
+        class="{{ inputClass }}"
+        type="{{ inputType }}"
+        id="{{ inputId }}"
+        [attr.name]="inputName"
+        [attr.form]="inputForm"
+
+        [attr.accept]="inputAccept ? inputAccept : null"
+        [attr.alt]="(inputType === 'image' && inputAlt) ? inputAlt : null"
+        [attr.autocomplete]="(['checkbox', 'radio'].includes(inputType) || !inputAutocomplete) ? null : inputAutocomplete"
+        [attr.capture]="(inputType === 'file' || inputCapture) ? inputCapture : null"
+        [attr.checked]="['checkbox', 'radio'].includes(inputType) && inputChecked ? 'checked' : null"
+        [attr.dirname]="
+            (['hidden', 'text', 'search', 'url', 'tel', 'email'].includes(inputType) && inputDirname)
+                ? inputDirname
+                : null
+        "
+        disabled="{{ inputDisabled }}"
+        [attr.formaction]="(['image', 'submit'].includes(inputType) && inputFormaction) ? inputFormaction : null"
+        [attr.formenctype]="(['image', 'submit'].includes(inputType) && inputFormenctype) ? inputFormenctype : null"
+        [attr.formmethod]="(['image', 'submit'].includes(inputType) && inputFormmethod) ? inputFormmethod : null"
+        [attr.formnovalidate]="(['image', 'submit'].includes(inputType) && inputFormnovalidate) ? inputFormnovalidate : null"
+        [attr.formtarget]="(['image', 'submit'].includes(inputType) && inputFormtarget) ? inputFormtarget : null"
+        [attr.height]="(inputType === 'image' && inputHeight) ? inputHeight : null"
+        [attr.list]="
+            (['hidden', 'password', 'checkbox', 'radio', 'image', 'submit'].includes(inputType) || !inputListId)
+            ? null
+            : inputListId
+        "
+        [attr.max]="
+            (['date', 'month', 'week', 'time', 'datetime-local', 'number', 'range'].includes(inputType) && inputMax)
+                ? inputMax
+                : null
+        "
+        [attr.maxlength]="
+            (['text', 'search', 'url', 'tel', 'email', 'password'].includes(inputType) && inputMaxlength)
+                ? inputMaxlength
+                : null
+        "
+        [attr.min]="
+            (['date', 'month', 'week', 'time', 'datetime-local', 'number', 'range'].includes(inputType) && inputMin)
+                ? inputMin
+                : null
+        "
+        [attr.minlength]="
+            (['text', 'search', 'url', 'tel', 'email', 'password'].includes(inputType) && inputMinlength)
+                ? inputMinlength
+                : null
+        "
+        [attr.multiple]="(['email', 'file'].includes(inputType) && inputMultiple) ? inputMultiple : null"
+        [attr.pattern]="
+            (['text', 'search', 'url', 'tel', 'email', 'password'].includes(inputType) && inputPattern)
+                ? inputPattern
+                : null
+        "
+        [attr.placeholder]="
+            (['text', 'search', 'url', 'tel', 'email', 'password', 'number'].includes(inputType) && inputPlaceholder)
+                ? inputPlaceholder
+                : null
+        "
+        [attr.popovertarget]="(inputType === 'button' && inputPopovertarget) ? inputPopovertarget : null"
+        [attr.popovertargetaction]="(inputType === 'button' && inputPopovertargetaction) ? inputPopovertargetaction : null"
+        [attr.readonly]="
+            (['hidden', 'range', 'color', 'checkbox', 'radio', 'button', 'image'].includes(inputType) || !inputReadonly)
+                ? null
+                : inputReadonly
+        "
+        [attr.required]="
+            (['hidden', 'range', 'color', 'button', 'image'].includes(inputType) || !inputRequired)
+                ? null
+                : inputRequired
+        "
+        [attr.size]="
+            (['text', 'search', 'url', 'tel', 'email', 'password'].includes(inputType) && inputSize)
+                ? inputSize
+                : null
+        "
+        [attr.src]="(inputType === 'image' && inputSrc) ? inputSrc : null"
+        [attr.step]="
+            (['date', 'month', 'week', 'time', 'datetime-local', 'number', 'range'].includes(inputType) && inputStep)
+                ? inputStep
+                : null
+        "
+        [attr.value]="(inputType === 'image' || !inputValue) ? null : inputValue"
+        [attr.width]="(inputType === 'image' && inputWidth) ? inputWidth : null"
+        [attr.aria-describedby]="inputAriaDescribedBy"
+        [(ngModel)]="inputValue"
+    />
+</div>
+<datalist
+    *ngIf="
+        inputListId &&
+        inputListOptions &&
+        !['hidden', 'password', 'checkbox', 'radio', 'image', 'submit'].includes(inputType)
+    "
+    id="{{ inputListId }}"
+    >
+    <option *ngFor="let option of inputListOptions"
+        disabled="{{ option.disabled }}"
+        selected="{{ option.selected }}"
+        value="{{ option.value }}">
+        {{ option.label }}
+    </option>
+</datalist>
