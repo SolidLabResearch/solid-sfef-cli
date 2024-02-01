@@ -23,7 +23,7 @@ The Solid Front End Form CLI is meant to help creating forms on Vue/Angular fram
 
 - ```sfef set-custom-css``` :   Set up custom CSS classes to be used in the FE form component
 
-- ```sfef create``` :          Creates the form (following SHACL shape) and required dependencies according to the selected framework
+- ```sfef create -f <framework> -s <shape>``` :          Creates the form (following SHACL shape) and required dependencies according to the selected framework
 
 <br/>
 
@@ -57,6 +57,24 @@ The Solid Front End Form CLI is meant to help creating forms on Vue/Angular fram
 
 ## Usage and examples<a name="usage"></a>
 
+- Following bash commands asume the installation was done globally.
+
+- If installation was done locally, then adapt bash commands accordingly.
+
+    e.g.
+
+    instead of
+
+    ```bash
+    sfef list-shapes
+    ```
+
+    use
+
+    ```bash
+    node . list-shapes
+    ```
+
 ### Help <a name="help"></a>
 
 Use the help command to print out the commands and options available in the CLI tool.
@@ -74,6 +92,8 @@ List the actual available shapes inside the solid-sfef-cli package.
 ```bash
 sfef list-shapes
 ```
+
+The CLI tool allows to use any path for the file from any location
 
 Example of path shape location: ```'/Users/myname/node_modules/SolidLabResearch/solid-sfef-cli/.assets/shacl/'```
 
@@ -124,41 +144,43 @@ Example of custom CSS classes json structure:
 
 ### Create form file and dependencies <a name="usage-create"></a>
 
-Creates the form component according to frame selected (vue/angular) and the shape (.ttl file).
+Creates the form component according to frame selected (vue or angular) and the shape (.ttl file).
 
 ```bash
-sfef create --framework [vue/angular] --shape [fileName]
+sfef create --framework <vue/angular> --shape <fileName/Path>
 ```
 
 or
 
 ```bash
-sfef create -f [vue/angular] -s [fileName]
+sfef create -f <vue/angular> -s <fileName/filePath>
 ```
 
 With the optional parameter ```--css```, the component file will include the css classes available in **form-custom-classes.json**
 
 ```bash
-sfef create --framework [vue/angular] --shape [fileName] --css
+sfef create --framework <vue/angular> --shape <fileName/filePath> --css
 ```
 
 or
 
 ```bash
-sfef create -f [vue/angular] -s [fileName] --c
+sfef create -f <vue/angular> -s <fileName/filePath> --c
 ```
 
-The fileName could be an **absolute path** or a **relative path** (in the solid-sfef-cli package).
+The shape could be an **absolute path** or a **file Name (relative path)**.
+The relative path refers to the solid-sfef-cli package.
+Check available .ttl file names using ```sfef list-shapes``` command.
 
 examples of valid **fileName** values:
 
 - ```adresregister-SHACL```
 
-    relative path expected to be in cli package. Check available .ttl file names using ```sfef list-shapes``` command.
+    a .ttl file name from ```'.assets/shacl'``` folder in the cli package.
 
 - ```/Users/myname/Documents/GIT/myProject/.shapes/my-project-shape.ttl```
 
-    absolute path
+    an absolute path.
 
 <br/>
 
@@ -340,11 +362,11 @@ sfef create -f angular -s another-example -c
 
 Executing above command will create the ```FormAnotherExample.component.html``` and ```FormAnotherExample.component.ts``` file in ```src/app/FormAnotherExample``` folder along with ```BasicInput``` depency component.
 
-The ```another-example.ttl``` includes various input types ```text``` and ```email```.
+The ```another-example.ttl``` shape includes ```text``` and ```email``` input types.
 
 Being ```'Given name'```, ```'Family name'```, ```'Country'```, ```'City'```, ```'Street Line'```, ```'Postal code'``` and ```'Organization name'``` required fields.
 
-As the optional ```-c``` (```--css```) is also present, the css classes from ```form-custom-classes.json``` are also applied.
+As the optional ```-c``` (```--css```) is also present, thus the css classes from ```form-custom-classes.json``` are applied to corresponding elements.
 
 ```json
 [
