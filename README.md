@@ -19,47 +19,50 @@ The Solid Front End Form CLI is meant to help creating forms on Vue/Angular fram
 
 ## CLI commands <a name="commands"></a>
 
-- ```sfef list-shapes``` :     List of available shapes (SHACL .ttl files)
+- ```sfef list-shapes``` :
+    List of available shapes (SHACL .ttl files).
 
-- ```sfef set-custom-css``` :   Set up custom CSS classes to be used in the FE form component
+- ```sfef set-custom-css``` :
+    Set up custom CSS classes to be used in the FE form component.
 
-- ```sfef create -f <framework> -s <shape>``` :          Creates the form (following SHACL shape) and required dependencies according to the selected framework
+- ```sfef create -f <framework> -s <shape>``` :
+    Creates the form (following SHACL shape) and required dependencies according to the selected framework.
 
 <br/>
 
 ## Install <a name="install"></a>
 
-- Solid-sfef-cli is a development CLI tool, it is recommened to install it using ```--global``` option. The following commands can be used:
+- Solid-sfef-cli is a development CLI tool, it is recommened to install it using ```--global``` parameter. The following commands can be used:
 
     ```bash
-    npm install SolidLabResearch/solid-sfef-cli --global
+    npm install @solidlab/solid-sfef-cli --global
     ```
 
     or
 
     ```bash
-    npm i SolidLabResearch/solid-sfef-cli -g
+    npm i @solidlab/solid-sfef-cli -g
     ```
 
-- It could also be install locally as a dev dependency using ```--save-dev``` option. The following commands can be used:
+- It could also be install locally as a dev dependency using ```--save-dev``` parameter. The following commands can be used:
 
     ```bash
-    npm install SolidLabResearch/solid-sfef-cli --save-dev
+    npm install @solidlab/solid-sfef-cli --save-dev
     ```
 
     or
 
     ```bash
-    npm i SolidLabResearch/solid-sfef-cli -D
+    npm i @solidlab/solid-sfef-cli -D
     ```
 
 <br/>
 
 ## Usage and examples<a name="usage"></a>
 
-- Following bash commands asume the installation was done globally.
+- Following section bash commands are under the **asumption that the installation was done globally**.
 
-- If installation was done locally, then adapt bash commands accordingly.
+- If installation was done **locally**, then adapt bash commands accordingly.
 
     e.g.
 
@@ -77,7 +80,7 @@ The Solid Front End Form CLI is meant to help creating forms on Vue/Angular fram
 
 ### Help <a name="help"></a>
 
-Use the help command to print out the commands and options available in the CLI tool.
+Use the help command to print out the commands and parameter available in the CLI tool.
 
 ```bash
 sfef help
@@ -95,7 +98,7 @@ sfef list-shapes
 
 The CLI tool allows to use any path for the file from any location
 
-Example of path shape location: ```'/Users/myname/node_modules/SolidLabResearch/solid-sfef-cli/.assets/shacl/'```
+Example of path shape location: ```'/Users/myname/node_modules/@solidlab/solid-sfef-cli/.assets/shacl/'```
 
 <br/>
 
@@ -366,7 +369,7 @@ The ```another-example.ttl``` shape includes ```text``` and ```email``` input ty
 
 Being ```'Given name'```, ```'Family name'```, ```'Country'```, ```'City'```, ```'Street Line'```, ```'Postal code'``` and ```'Organization name'``` required fields.
 
-As the optional ```-c``` (```--css```) is also present, thus the css classes from ```form-custom-classes.json``` are applied to corresponding elements.
+As the optional parameter ```-c``` (```--css```) is also present, thus the css classes from ```form-custom-classes.json``` are applied to corresponding elements.
 
 ```json
 [
@@ -558,23 +561,23 @@ To uninstall, simply run:
 - for global installation:
 
     ```bash
-    npm uninstall SolidLabResearch/solid-sfef-cli --global
+    npm uninstall @solidlab/solid-sfef-cli --global
     ```
 
     or
 
     ```bash
-    npm rm SolidLabResearch/solid-sfef-cli -g
+    npm rm @solidlab/solid-sfef-cli -g
     ```
 
 - for development installation:
 
     ```bash
-    npm uninstall SolidLabResearch/solid-sfef-cli --save-dev
+    npm uninstall @solidlab/solid-sfef-cli --save-dev
     ```
 
     or
 
     ```bash
-    npm rm SolidLabResearch/solid-sfef-cli -D
+    npm rm @solidlab/solid-sfef-cli -D
     ```
