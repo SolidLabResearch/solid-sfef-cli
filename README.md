@@ -33,6 +33,19 @@ Please, check ```BASIC_TYPE_MAP``` in ```constants.ts``` for a mapping between `
 
 See [Changelog](#changelog) for the current status of the CLI.
 
+```mermaid
+graph LR
+---
+title: The 'create' diagram flow from .ttl shape to FE 'form' component
+---
+    A[SHACL\n.ttl] --> B[JSONLD]
+    B --> C[custom\nJSON]
+    C --> D[form\ncomponent]
+    subgraph FE framework
+        D <-.-> E(Basic\ncomponents)
+    end
+```
+
 <br/>
 
 ## CLI commands <a name="commands"></a>
