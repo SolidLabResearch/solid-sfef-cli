@@ -37,13 +37,21 @@ See [Changelog](#changelog) for the current status of the CLI.
 ---
 title: The 'create' diagram flow from .ttl shape to the FE 'form' component
 ---
-graph LR
-    A[**SHACL\n.ttl**] --> B[JSONLD]
-    B --> C[custom\nJSON]
-    C --> D[**form\ncomponent**]
-    subgraph FE framework
-        direction BT
-        E(Basic\ncomponents) <-. dependecies .-> D
+flowchart LR
+    A["`**SHACL**
+      .ttl`"]
+    B[JSONLD]
+    C["`custom
+      JSON`"]
+    D["`**form
+      component**`"]
+    E("`Basic
+      components`")
+    A --> B
+    B --> C
+    C --> D
+    subgraph DE[FE framework]
+        D <-. dependecies .-> E
     end
 ```
 
