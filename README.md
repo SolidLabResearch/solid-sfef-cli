@@ -17,15 +17,15 @@
 
 ## Introduction <a name="introduction"></a>
 
-The Solid Front End Form CLI is meant to help creating forms on Vue/Angular frameworks from SHACL (Shapes Constraint Language) files.
+The Solid Front End Form CLI is meant to help create forms on Vue/Angular frameworks from SHACL (Shapes Constraint Language) files.
 
-The [```create```](#usage-create) comamnd recreates a ```<form>``` using the rules from a SHACL file on the framework selected.
+The [```create```](#usage-create) command recreates a ```<form>``` using the rules from a SHACL file on the framework selected.
 
-The available frameworks are: **Vue3** and **Angular2**.
+The available frameworks are **Vue3** and **Angular2**.
 
-All outputted forms components are created without styles.
+All outputted form components are created without styles.
 
-For both frameworks, all [HTML form elements](https://developer.mozilla.org/en-US/docs/Web/API/HTMLFormElement/elements) have been implemented. For each form element, all possible attributes and values have been taken in consideration.
+For both frameworks, all [HTML form elements](https://developer.mozilla.org/en-US/docs/Web/API/HTMLFormElement/elements) have been implemented. For each form element, all possible attributes and values have been taken into consideration.
 
 But, only the ```<input>``` element is considered in the mapping as of now.
 
@@ -50,7 +50,7 @@ See [Changelog](#changelog) for the current status of the CLI.
 
 ## Install <a name="install"></a>
 
-- Solid-sfef-cli is a development CLI tool, it is recommened to install it using ```--global``` parameter. The following commands can be used:
+- Solid-sfef-cli is a development CLI tool, it is recommended to install it using ```--global``` parameter. The following commands can be used:
 
     ```bash
     npm install @solidlab/solid-sfef-cli --global
@@ -78,9 +78,9 @@ See [Changelog](#changelog) for the current status of the CLI.
 
 ## Usage and examples<a name="usage"></a>
 
-**The current section bash commands are under the asumption that the installation was done globally**.
+**The current section bash commands are under the assumption that the installation was done globally**.
 
-If the installation was done **locally** bash commands shoulb be adapted accordingly.
+If the installation was done **locally** bash commands should be adapted accordingly.
 
 e.g.
 
@@ -119,12 +119,12 @@ The command asks for CSS classes on:
 - ```<form>``` element
 - ```<div>``` wrapper around input and label
 - ```<label>``` element
-- ```<em>``` element which contains additional information binded to the label (```sh:description```)
+- ```<em>``` element which contains additional information bound to the label (```sh:description```)
 - ```<input>``` element
 
-The custom classes are stored in project root under filename **form-custom-classes.json**.
+The custom classes are stored in the project root under filename **form-custom-classes.json**.
 
-Example of custom CSS classes json structure:
+Example of custom CSS classes JSON structure:
 
 ```json
 [
@@ -151,7 +151,7 @@ Example of custom CSS classes json structure:
 
 ### Create form file and dependencies <a name="usage-create"></a>
 
-Creates the form component according to frame selected (vue or angular) and the shape (.ttl file).
+Creates the form component according to the frame selected (vue or angular) and the shape (.ttl file).
 
 The ```create``` command has 2 required parameters (```--framework``` and ```--shape```) and 1 optional parameter (```--css```).
 
@@ -166,7 +166,7 @@ sfef create -f <vue/angular> -s <fileName/filePath>
 ```
 
 With the optional parameter ```--css```, the component file will include the css classes available in **form-custom-classes.json**.
-This json file needs to be created using the [```set-custom-css```](#usage-set-custom-styles) command.
+This JSON file needs to be created using the [```set-custom-css```](#usage-set-custom-styles) command.
 
 ```bash
 sfef create --framework <vue/angular> --shape <fileName/filePath> --css
@@ -178,7 +178,7 @@ or
 sfef create -f <vue/angular> -s <fileName/filePath> --c
 ```
 
-The shape could be an **absolute path** or a **file Name (relative path)**.
+The shape could be an **absolute path** or a **file name (relative path)**.
 The relative path refers to the solid-sfef-cli package.
 Check available .ttl file names using ```sfef list-shapes``` command.
 
