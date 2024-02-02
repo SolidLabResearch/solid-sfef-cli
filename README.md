@@ -632,7 +632,7 @@ To uninstall, simply run:
 The ```create``` functionality is adapted to a small amount of shape scenarios.
 See the .ttl files in the ```./assets/shacl/``` folder for some examples.
 
-##### ```BasicInput``` component.
+##### ```BasicInput``` component
 
 As a result of this scope scenarios, only the HTML ```<input>``` element is considered.
 
@@ -655,8 +655,6 @@ e.g.
 Only a small amount of available attributes are taken in account: ```id```, ```name```, ```form```, ```type```, ```pattern```, ```required``` and ```list```.
 
 And for the ```type``` attribute only some values are considered: ```text```, ```number```, ```checkbox```, ```email```, ```url```, ```date```, ```time```, ```datetime-local``` and ```month```.
-
-Please, check ```BASIC_TYPE_MAP``` in ```constants.ts``` for a mapping between ```sh:datatype``` and basic components and its types.
 
 ##### ```<label>```
 
