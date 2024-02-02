@@ -35,14 +35,15 @@ See [Changelog](#changelog) for the current status of the CLI.
 
 ```mermaid
 ---
-title: The 'create' diagram flow from .ttl shape to FE 'form' component
+title: The 'create' diagram flow from .ttl shape to the FE 'form' component
 ---
 graph LR
-    A[SHACL\n.ttl] --> B[JSONLD]
+    A[**SHACL\n.ttl**] --> B[JSONLD]
     B --> C[custom\nJSON]
-    C --> D[form\ncomponent]
+    C --> D[**form\ncomponent**]
     subgraph FE framework
-        D <-.-> E(Basic\ncomponents)
+        direction BT
+        E(Basic\ncomponents) <-. dependecies .-> D
     end
 ```
 
