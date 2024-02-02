@@ -3,6 +3,7 @@ import fs from 'node:fs'
 import chalk from 'chalk'
 
 import {
+    element,
     customShape,
     customClass
 } from './types.js'
@@ -89,7 +90,6 @@ export const createAngularForm = async (customJson: Array<customShape>, fileName
  * @returns {string} Returns Angular HTML markup
  */
 function getTemplateMarkup(customJson: Array<customShape>, fileName: string, customCss: Array<customClass>, basicComponents: Set<string>) {
-    const inputId: string = BASIC_INPUT_MAP.get('inputId')!
     let templateMarkup = `
 <form id="${fileName}" class="${getClasses('form', customCss)}">`
 
@@ -102,39 +102,26 @@ function getTemplateMarkup(customJson: Array<customShape>, fileName: string, cus
             block.elements.forEach((element) => {
                 const basicComponent: string = BASIC_TYPE_MAP.get(element.type)![0]
                 if (element.type) basicComponents.add(basicComponent)
-                templateMarkup += `
-    <app-basic-input
-        inputType="${getBasicInputType(element)}"
-        inputId="${eval(inputId)}"
-        inputName="${element.id}"
-        inputForm="${fileName}"
-        inputWrapperClass="${getClasses('input-wrapper', customCss)}"
-        inputClass="${getClasses('input-element', customCss)}"`
-                if (element.name) {
-                    templateMarkup += `
-        inputLabel="${element.name}"
-        inputLabelClass="input-label ${getClasses('input-label', customCss)}"`
-                }
-                if (element.description) {
-                    templateMarkup += `
-        inputAdditionalInfo="${element.description}"
-        inputLabelInfoClass="${getClasses('input-additional-info', customCss)}"`
-                }
-                if (element.min) {
-                    templateMarkup += `
-        inputRequired="true"`
-                }
-                if (element.list) {
-                    templateMarkup += `
-        inputListId="list-${element.id}"
-        inputListOptions='${JSON.stringify(element.list)}'`
-                }
-                if (element.pattern) {
-                    templateMarkup += `
-        inputPattern="${element.pattern}"`
-                }
-                templateMarkup += `
-    ></app-basic-input>`
+
+                switch (basicComponent) {
+                    case 'BasicButton':
+                        // to do if needed
+                        break
+                    case 'BasicFieldSet':
+                        // to do if needed
+                        break
+                    case 'BasicOption':
+                        // to do if needed
+                        break
+                    case 'BasicSelect':
+                        // to do if needed
+                        break
+                    case 'BasicTextArea':
+                        // to do if needed
+                        break
+                    default:
+                      templateMarkup += getBasicInputMarkup(element, fileName, customCss)
+                  }
             })
         }
     });
@@ -142,6 +129,53 @@ function getTemplateMarkup(customJson: Array<customShape>, fileName: string, cus
 </form>`
 
     return templateMarkup
+}
+
+/**
+ * getBasicInputMarkup() is a Private fn
+ * returns the <template> code for an <input> HTML element
+ * @param {object<element>} element contains html form element shape data
+ * @param {string} fileName of the vue form
+ * @param {Array<customClass>} customCss contains custom CSS class data
+ * @returns {string} Returns Angular BasicInput HTML markup
+ */
+function getBasicInputMarkup(element: element, fileName: string, customCss: Array<customClass>): string {
+    const inputId: string = BASIC_INPUT_MAP.get('inputId')!
+    let BasicInputMarkup = `
+    <app-basic-input
+        inputType="${getBasicInputType(element)}"
+        inputId="${eval(inputId)}"
+        inputName="${element.id}"
+        inputForm="${fileName}"
+        inputWrapperClass="${getClasses('input-wrapper', customCss)}"
+        inputClass="${getClasses('input-element', customCss)}"`
+    if (element.name) {
+        BasicInputMarkup += `
+        inputLabel="${element.name}"
+        inputLabelClass="input-label ${getClasses('input-label', customCss)}"`
+    }
+    if (element.description) {
+        BasicInputMarkup += `
+        inputAdditionalInfo="${element.description}"
+        inputLabelInfoClass="${getClasses('input-additional-info', customCss)}"`
+    }
+    if (element.min) {
+        BasicInputMarkup += `
+        inputRequired="true"`
+    }
+    if (element.list) {
+        BasicInputMarkup += `
+        inputListId="list-${element.id}"
+        inputListOptions='${JSON.stringify(element.list)}'`
+    }
+    if (element.pattern) {
+        BasicInputMarkup += `
+        inputPattern="${element.pattern}"`
+    }
+    BasicInputMarkup += `
+    ></app-basic-input>`
+
+    return BasicInputMarkup
 }
 
 /**

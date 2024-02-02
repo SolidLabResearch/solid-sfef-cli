@@ -22,7 +22,7 @@ export declare const ANGULAR_COMP_FILES: string[];
  * ---
  * IN PROGRESS...
  * In january/2024 only existing maps are with BasicInput,
- * once more Shapes scenarios are in consideration,
+ * once more Shapes scenarios are implemented,
  * new mappings will be required.
  */
 export declare const BASIC_TYPE_MAP: Map<string, [string, string]>;

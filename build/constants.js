@@ -28,7 +28,7 @@ export const ANGULAR_COMP_FILES = ['.component.html', '.component.scss', '.compo
  * ---
  * IN PROGRESS...
  * In january/2024 only existing maps are with BasicInput,
- * once more Shapes scenarios are in consideration,
+ * once more Shapes scenarios are implemented,
  * new mappings will be required.
  */
 export const BASIC_TYPE_MAP = new Map([
@@ -55,11 +55,11 @@ export const BASIC_TYPE_MAP = new Map([
     ['anyURI', ['BasicInput', 'url']],
     ['QName', ['', '']],
     ['NOTATION', ['', '']],
-    ['toBeDefined', ['BasicButton', '']],
-    ['toBeDefined', ['BasicFieldSet', '']],
-    ['toBeDefined', ['BasicOption', '']],
-    ['toBeDefined', ['BasicSelect', '']],
-    ['toBeDefined', ['BasicTextArea', '']]
+    ['toBeDefined01', ['BasicButton', '']],
+    ['toBeDefined02', ['BasicFieldSet', '']],
+    ['toBeDefined03', ['BasicOption', '']],
+    ['toBeDefined04', ['BasicSelect', '']],
+    ['toBeDefined05', ['BasicTextArea', '']]
 ]);
 /**
  * VUE_COMP_DEPENDENCIES_MAP maps

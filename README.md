@@ -1,6 +1,21 @@
 # Solid FE Form CLI
 
-## Introduction
+<!-- TOC -->
+- [Introduction](#introduction)
+- [CLI commands](#commands)
+- [Install](#install)
+- [Usage and examples](#usage)
+  - [Help](#help)
+  - [List shapes available](#usage-list-shapes)
+  - [Set custom CSS styles](#usage-set-custom-styles)
+  - [Create form file and dependencies](#usage-create)
+- [Uninstall](#uninstall)
+- [Changelog](#changelog)
+<!-- TOC -->
+
+<br/>
+
+## Introduction <a name="introduction"></a>
 
 The Solid Front End Form CLI is meant to help creating forms on Vue/Angular frameworks from SHACL (Shapes Constraint Language) files.
 
@@ -17,22 +32,6 @@ But, only the ```<input>``` element is considered in the mapping as of now.
 Please, check ```BASIC_TYPE_MAP``` in ```constants.ts``` for a mapping between ```sh:datatype``` and basic components and its types.
 
 See [Changelog](#changelog) for the current status of the CLI.
-
-<br/>
-
-## Index
-
-<!-- TOC -->
-- [CLI commands](#commands)
-- [Install](#install)
-- [Usage and examples](#usage)
-  - [Help](#help)
-  - [List shapes available](#usage-list-shapes)
-  - [Set custom CSS styles](#usage-set-custom-styles)
-  - [Create form file and dependencies](#usage-create)
-- [Uninstall](#uninstall)
-- [Changelog](#changelog)
-<!-- TOC -->
 
 <br/>
 
@@ -154,6 +153,8 @@ Example of custom CSS classes json structure:
 
 Creates the form component according to frame selected (vue or angular) and the shape (.ttl file).
 
+The ```create``` command has 2 required parameters (```--framework``` and ```--shape```) and 1 optional parameter (```--css```).
+
 ```bash
 sfef create --framework <vue/angular> --shape <fileName/Path>
 ```
@@ -164,7 +165,8 @@ or
 sfef create -f <vue/angular> -s <fileName/filePath>
 ```
 
-With the optional parameter ```--css```, the component file will include the css classes available in **form-custom-classes.json**
+With the optional parameter ```--css```, the component file will include the css classes available in **form-custom-classes.json**.
+This json file needs to be created using the [```set-custom-css```](#usage-set-custom-styles) command.
 
 ```bash
 sfef create --framework <vue/angular> --shape <fileName/filePath> --css
@@ -611,9 +613,15 @@ The ```create``` functionality is adapted to a small amount of shape scenarios.
 See ```./assets/shacl/``` for some examples.
 
 As a result only ```<input>``` element is in consideration.
-With a small amount of attributes: ```id```, ```name```, ```form```, ```type```, ```pattern```, ```required```, aaa
+With only a small amount of attributes take in account: ```id```, ```name```, ```form```, ```type```, ```pattern```, ```required``` and ```list```.
 
 With only attribute ```type``` values ```text```, ```number```, ```checkbox```, ```email```, ```url```, ```date```, ```time```, ```datetime-local``` and ```month``` considered.
 Please, check ```BASIC_TYPE_MAP``` in ```constants.ts``` for a mapping between ```sh:datatype``` and basic components and its types.
 
 Along with the ```<input>``` element, the  ```<label>``` element, with and option to add an additional information to it (```<span>```).
+
+Anyway, in both frameworks, the basic HTML forms elements has been created, and are ready to be implemented.
+
+The ```<input>```, ```<button>```, ```<fieldset>```, ```<select>``` and ```<textarea>``` components are created with all the possible attributes and values.
+
+So, the package is ready to be extended for any particular shapes scenarios, or simply be custom adapted.

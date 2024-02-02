@@ -52,7 +52,6 @@ export const createAngularForm = async (customJson, fileName, customCss) => {
  * @returns {string} Returns Angular HTML markup
  */
 function getTemplateMarkup(customJson, fileName, customCss, basicComponents) {
-    const inputId = BASIC_INPUT_MAP.get('inputId');
     let templateMarkup = `
 <form id="${fileName}" class="${getClasses('form', customCss)}">`;
     customJson.forEach((block, index) => {
@@ -65,7 +64,43 @@ function getTemplateMarkup(customJson, fileName, customCss, basicComponents) {
                 const basicComponent = BASIC_TYPE_MAP.get(element.type)[0];
                 if (element.type)
                     basicComponents.add(basicComponent);
-                templateMarkup += `
+                switch (basicComponent) {
+                    case 'BasicButton':
+                        // to do if needed
+                        break;
+                    case 'BasicFieldSet':
+                        // to do if needed
+                        break;
+                    case 'BasicOption':
+                        // to do if needed
+                        break;
+                    case 'BasicSelect':
+                        // to do if needed
+                        break;
+                    case 'BasicTextArea':
+                        // to do if needed
+                        break;
+                    default:
+                        templateMarkup += getBasicInputMarkup(element, fileName, customCss);
+                }
+            });
+        }
+    });
+    templateMarkup += `
+</form>`;
+    return templateMarkup;
+}
+/**
+ * getBasicInputMarkup() is a Private fn
+ * returns the <template> code for an <input> HTML element
+ * @param {object<element>} element contains html form element shape data
+ * @param {string} fileName of the vue form
+ * @param {Array<customClass>} customCss contains custom CSS class data
+ * @returns {string} Returns Angular BasicInput HTML markup
+ */
+function getBasicInputMarkup(element, fileName, customCss) {
+    const inputId = BASIC_INPUT_MAP.get('inputId');
+    let BasicInputMarkup = `
     <app-basic-input
         inputType="${getBasicInputType(element)}"
         inputId="${eval(inputId)}"
@@ -73,37 +108,32 @@ function getTemplateMarkup(customJson, fileName, customCss, basicComponents) {
         inputForm="${fileName}"
         inputWrapperClass="${getClasses('input-wrapper', customCss)}"
         inputClass="${getClasses('input-element', customCss)}"`;
-                if (element.name) {
-                    templateMarkup += `
+    if (element.name) {
+        BasicInputMarkup += `
         inputLabel="${element.name}"
         inputLabelClass="input-label ${getClasses('input-label', customCss)}"`;
-                }
-                if (element.description) {
-                    templateMarkup += `
+    }
+    if (element.description) {
+        BasicInputMarkup += `
         inputAdditionalInfo="${element.description}"
         inputLabelInfoClass="${getClasses('input-additional-info', customCss)}"`;
-                }
-                if (element.min) {
-                    templateMarkup += `
+    }
+    if (element.min) {
+        BasicInputMarkup += `
         inputRequired="true"`;
-                }
-                if (element.list) {
-                    templateMarkup += `
+    }
+    if (element.list) {
+        BasicInputMarkup += `
         inputListId="list-${element.id}"
         inputListOptions='${JSON.stringify(element.list)}'`;
-                }
-                if (element.pattern) {
-                    templateMarkup += `
+    }
+    if (element.pattern) {
+        BasicInputMarkup += `
         inputPattern="${element.pattern}"`;
-                }
-                templateMarkup += `
+    }
+    BasicInputMarkup += `
     ></app-basic-input>`;
-            });
-        }
-    });
-    templateMarkup += `
-</form>`;
-    return templateMarkup;
+    return BasicInputMarkup;
 }
 /**
  * getScriptMarkup() is a Private fn

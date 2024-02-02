@@ -27,6 +27,7 @@ export function getBasicInputType(element: element): string {
     const type: string = BASIC_INPUT_MAP.get('inputType')!
     const shapeType: string = eval(type)
     const componentValues: [string, string] = BASIC_TYPE_MAP.get(shapeType)!
+
     return componentValues[1]
 }
 
