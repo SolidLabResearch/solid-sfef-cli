@@ -46,7 +46,7 @@ flowchart LR
     A --> B
     B --> C
     C --> D
-    subgraph DE(FE framework)
+    subgraph DE[FE framework]
         D <-. dependecies .-> E
     end
     classDef bold stroke:#333,stroke-width:4px
