@@ -42,7 +42,7 @@ flowchart LR
     B[JSONLD]
     C[custom\nJSON]
     D[form\ncomponent]
-    E(Basic\ncomponents)
+    E(BasicInput\nBasicFieldset\nBasicButton\nBasicTextarea\nBasicSelect)
     A --> B
     B --> C
     C --> D
