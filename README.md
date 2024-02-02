@@ -627,19 +627,48 @@ To uninstall, simply run:
 
 ### version 0.1.0 - January 2024
 
+#### Limitation
+
 The ```create``` functionality is adapted to a small amount of shape scenarios.
-See ```./assets/shacl/``` for some examples.
+See the .ttl files in the ```./assets/shacl/``` folder for some examples.
 
-As a result only ```<input>``` element is in consideration.
-With only a small amount of attributes take in account: ```id```, ```name```, ```form```, ```type```, ```pattern```, ```required``` and ```list```.
+##### ```BasicInput``` component.
 
-With only attribute ```type``` values ```text```, ```number```, ```checkbox```, ```email```, ```url```, ```date```, ```time```, ```datetime-local``` and ```month``` considered.
+As a result of this scope scenarios, only the HTML ```<input>``` element is considered.
+
+See ```BASIC_TYPE_MAP``` in ```constants.ts``` for mapping between shape (```sh:property```) and the corresponding Basic element (as well as type value).
+
+e.g.
+
+```js
+    ...
+    ['email', ['BasicInput', 'email']],
+    ['string', ['BasicInput', 'text']],
+    ['lang String', ['BasicInput', 'text']],
+    ['boolean', ['BasicInput', 'checkbox']],
+    ['integer', ['BasicInput', 'number']],
+    ...
+```
+
+##### ```<input>```
+
+Only a small amount of available attributes are taken in account: ```id```, ```name```, ```form```, ```type```, ```pattern```, ```required``` and ```list```.
+
+And for the ```type``` attribute only some values are considered: ```text```, ```number```, ```checkbox```, ```email```, ```url```, ```date```, ```time```, ```datetime-local``` and ```month```.
+
 Please, check ```BASIC_TYPE_MAP``` in ```constants.ts``` for a mapping between ```sh:datatype``` and basic components and its types.
 
-Along with the ```<input>``` element, the  ```<label>``` element, with and option to add an additional information to it (```<span>```).
+##### ```<label>```
+
+Related to the  ```<label>``` element, the value is coming from ```sh:name``` (or ```sh:path```).
+
+On top, an option to add additional information to the label is available. The value is coming from ```sh:description``` and set in a  ```<span>``` element.
+Then, it is up to developer to style it properly (e.g. second line, :hover, floating,...).
+
+#### Ready to grow
 
 Anyway, in both frameworks, the basic HTML forms elements has been created, and are ready to be implemented.
 
-The ```<input>```, ```<button>```, ```<fieldset>```, ```<select>``` and ```<textarea>``` components are created with all the possible attributes and values.
+The ```<input>```, ```<button>```, ```<fieldset>```, ```<select>``` and ```<textarea>``` components are created with all the possible attributes and values. Following expected [HTML markup](https://developer.mozilla.org/en-US/docs/Web/API/HTMLFormElement/elements).
 
 So, the package is ready to be extended for any particular shapes scenarios, or simply be custom adapted.
