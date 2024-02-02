@@ -38,15 +38,11 @@ See [Changelog](#changelog) for the current status of the CLI.
 title: The 'create' diagram flow from .ttl shape to the FE 'form' component
 ---
 flowchart LR
-    A["`**SHACL**
-      .ttl`"]
+    A[SHACL\n.ttl]
     B[JSONLD]
-    C["`custom
-      JSON`"]
-    D["`**form
-      component**`"]
-    E("`Basic
-      components`")
+    C[custom\nJSON]
+    D[form\ncomponent]
+    E(Basic\ncomponents)
     A --> B
     B --> C
     C --> D
