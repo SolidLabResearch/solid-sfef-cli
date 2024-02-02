@@ -1,6 +1,24 @@
 # Solid FE Form CLI
 
+## Introduction
+
 The Solid Front End Form CLI is meant to help creating forms on Vue/Angular frameworks from SHACL (Shapes Constraint Language) files.
+
+The [```create```](#usage-create) comamnd recreates a ```<form>``` using the rules from a SHACL file on the framework selected.
+
+The available frameworks are: **Vue3** and **Angular2**.
+
+All outputted forms components are created without styles.
+
+For both frameworks, all [HTML form elements](https://developer.mozilla.org/en-US/docs/Web/API/HTMLFormElement/elements) have been implemented. For each form element, all possible attributes and values have been taken in consideration.
+
+But, only the ```<input>``` element is considered in the mapping as of now.
+
+Please, check ```BASIC_TYPE_MAP``` in ```constants.ts``` for a mapping between ```sh:datatype``` and basic components and its types.
+
+See [Changelog](#changelog) for the current status of the CLI.
+
+<br/>
 
 ## Index
 
@@ -13,20 +31,21 @@ The Solid Front End Form CLI is meant to help creating forms on Vue/Angular fram
   - [Set custom CSS styles](#usage-set-custom-styles)
   - [Create form file and dependencies](#usage-create)
 - [Uninstall](#uninstall)
+- [Changelog](#changelog)
 <!-- TOC -->
 
 <br/>
 
 ## CLI commands <a name="commands"></a>
 
-- ```sfef list-shapes``` :
-    List of available shapes (SHACL .ttl files).
-
 - ```sfef set-custom-css``` :
     Set up custom CSS classes to be used in the FE form component.
 
-- ```sfef create -f <framework> -s <shape>``` :
+- ```sfef create -f <framework> -s <shape> [-c]``` :
     Creates the form (following SHACL shape) and required dependencies according to the selected framework.
+
+- ```sfef list-shapes``` :
+    List of available shapes (SHACL .ttl files).
 
 <br/>
 
@@ -44,7 +63,7 @@ The Solid Front End Form CLI is meant to help creating forms on Vue/Angular fram
     npm i @solidlab/solid-sfef-cli -g
     ```
 
-- It could also be install locally as a dev dependency using ```--save-dev``` parameter. The following commands can be used:
+- It could also be installed locally as a dev dependency using ```--save-dev``` parameter. The following commands can be used:
 
     ```bash
     npm install @solidlab/solid-sfef-cli --save-dev
@@ -60,45 +79,31 @@ The Solid Front End Form CLI is meant to help creating forms on Vue/Angular fram
 
 ## Usage and examples<a name="usage"></a>
 
-- Following section bash commands are under the **asumption that the installation was done globally**.
+**The current section bash commands are under the asumption that the installation was done globally**.
 
-- If installation was done **locally**, then adapt bash commands accordingly.
+If the installation was done **locally** bash commands shoulb be adapted accordingly.
 
-    e.g.
+e.g.
 
-    instead of
-
-    ```bash
-    sfef list-shapes
-    ```
-
-    use
-
-    ```bash
-    node . list-shapes
-    ```
-
-### Help <a name="help"></a>
-
-Use the help command to print out the commands and parameter available in the CLI tool.
-
-```bash
-sfef help
-```
-
-<br/>
-
-### List shapes available <a name="usage-list-shapes"></a>
-
-List the actual available shapes inside the solid-sfef-cli package.
+instead of
 
 ```bash
 sfef list-shapes
 ```
 
-The CLI tool allows to use any path for the file from any location
+use
 
-Example of path shape location: ```'/Users/myname/node_modules/@solidlab/solid-sfef-cli/.assets/shacl/'```
+```bash
+node . list-shapes
+```
+
+### Help <a name="help"></a>
+
+Use the help command to print out the commands and parameters available in the CLI tool.
+
+```bash
+sfef help
+```
 
 <br/>
 
@@ -177,11 +182,11 @@ Check available .ttl file names using ```sfef list-shapes``` command.
 
 examples of valid **fileName** values:
 
-- ```adresregister-SHACL```
+- ```'adresregister-SHACL'```
 
     a .ttl file name from ```'.assets/shacl'``` folder in the cli package.
 
-- ```/Users/myname/Documents/GIT/myProject/.shapes/my-project-shape.ttl```
+- ```'/Users/myname/Documents/GIT/myProject/.shapes/my-project-shape.ttl'```
 
     an absolute path.
 
@@ -554,6 +559,20 @@ when all fields are filled properly:
 
 <br/>
 
+### List shapes available <a name="usage-list-shapes"></a>
+
+List the actual available shapes inside the solid-sfef-cli package.
+
+```bash
+sfef list-shapes
+```
+
+A part from the listed shapes, the ```create``` command also allows to use global path for any shape file.
+
+Example of package's shapes folder path on OSX: ```'/Users/myname/node_modules/@solidlab/solid-sfef-cli/.assets/shacl/'```
+
+<br/>
+
 ## Uninstall <a name="uninstall"></a>
 
 To uninstall, simply run:
@@ -581,3 +600,20 @@ To uninstall, simply run:
     ```bash
     npm rm @solidlab/solid-sfef-cli -D
     ```
+
+<br/>
+
+## Changelog <a name="changelog"></a>
+
+### version 0.1.0 - January 2024
+
+The ```create``` functionality is adapted to a small amount of shape scenarios.
+See ```./assets/shacl/``` for some examples.
+
+As a result only ```<input>``` element is in consideration.
+With a small amount of attributes: ```id```, ```name```, ```form```, ```type```, ```pattern```, ```required```, aaa
+
+With only attribute ```type``` values ```text```, ```number```, ```checkbox```, ```email```, ```url```, ```date```, ```time```, ```datetime-local``` and ```month``` considered.
+Please, check ```BASIC_TYPE_MAP``` in ```constants.ts``` for a mapping between ```sh:datatype``` and basic components and its types.
+
+Along with the ```<input>``` element, the  ```<label>``` element, with and option to add an additional information to it (```<span>```).
