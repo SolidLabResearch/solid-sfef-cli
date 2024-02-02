@@ -49,7 +49,7 @@ flowchart LR
     subgraph DE[FE framework]
         D <-. dependecies .-> E
     end
-    classDef bold stroke:#333,stroke-width:4px
+    classDef bold stroke-width:3px
 ```
 
 <br/>
