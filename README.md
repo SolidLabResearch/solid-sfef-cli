@@ -667,6 +667,6 @@ Then, it is up to developer to style it properly (e.g. second line, :hover, floa
 
 Anyway, in both frameworks, the basic HTML forms elements has been created, and are ready to be implemented.
 
-The ```<input>```, ```<button>```, ```<fieldset>```, ```<select>``` and ```<textarea>``` components are created with all the possible attributes and values. Following expected [HTML markup](https://developer.mozilla.org/en-US/docs/Web/API/HTMLFormElement/elements).
+The ```<input>```, ```<button>```, ```<fieldset>```, ```<select>``` and ```<textarea>``` components are created following expected [HTML markup](https://developer.mozilla.org/en-US/docs/Web/API/HTMLFormElement/elements), with all the possible attributes and values.
 
 So, the package is ready to be extended for any particular shapes scenarios, or simply be custom adapted.
