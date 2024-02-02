@@ -38,10 +38,10 @@ See [Changelog](#changelog) for the current status of the CLI.
 title: The 'create' diagram flow from .ttl shape to the FE 'form' component
 ---
 flowchart LR
-    A[SHACL\n.ttl]
+    A[SHACL\n.ttl]:::bold
     B[JSONLD]
     C[custom\nJSON]
-    D[form\ncomponent]
+    D[form\ncomponent]:::bold
     E(BasicInput\nBasicFieldset\nBasicButton\nBasicTextarea\nBasicSelect)
     A --> B
     B --> C
@@ -49,8 +49,7 @@ flowchart LR
     subgraph DE[FE framework]
         D <-. dependecies .-> E
     end
-    style A stroke:#333,stroke-width:4px
-    style D stroke:#333,stroke-width:4px
+    classDef bold stroke:#333,stroke-width:4px
 ```
 
 <br/>
